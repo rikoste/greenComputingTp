@@ -10,6 +10,11 @@ public class Device {
 	private boolean donneesMobile;
 	private int luminsoite;
 	private int batterie;
+	private double consoWifi;
+	private double consoBlouthoot;
+	private double consoDonnesMobile;
+	private double consoLuminosite;
+	
 	
 	private ArrayList<App> apps = new ArrayList<App>();
 	
@@ -20,10 +25,46 @@ public class Device {
 		this.donneesMobile=false;
 		this.luminsoite=100;
 		this.batterie=100;
+		this.consoWifi=0.3;
+		this.consoBlouthoot=0.1;
+		this.consoDonnesMobile=0.3;
+		this.consoLuminosite=0.4;
 		
 		// Ajout des apps dans la liste
 		initApp();
 	}
+	
+	
+	
+	public boolean ifInternetUsed(String composant) {
+		
+		for (App app : this.apps) {
+		     if(composant.equals("internet")) {
+		    	 if(app.isUseBleuthoot()==true) {
+		    		 return true;
+		    	 }
+		     }
+		} 			
+		return false;
+	}
+	
+
+	public boolean ifBleuthootUsed(String composant) {
+		
+		for (App app : this.apps) {
+		     if(composant.equals("bleuthoot")) {
+		    	 if(app.isUseBleuthoot()==true) {
+		    		 return true;
+		    	 }
+		     }
+		} 			
+		return false;
+	}
+	
+	
+	
+	
+	
 
 	public void initApp() {
 		App facebook = new App("FaceBook", 0.15, true, false, 30, 15);
@@ -52,6 +93,66 @@ public class Device {
 	
 	
 	
+	public double getConsoWifi() {
+		return consoWifi;
+	}
+
+
+
+	public void setConsoWifi(double consoWifi) {
+		this.consoWifi = consoWifi;
+	}
+
+
+
+	public double getConsoBlouthoot() {
+		return consoBlouthoot;
+	}
+
+
+
+	public void setConsoBlouthoot(double consoBlouthoot) {
+		this.consoBlouthoot = consoBlouthoot;
+	}
+
+
+
+	public double getConsoDonnesMobile() {
+		return consoDonnesMobile;
+	}
+
+
+
+	public void setConsoDonnesMobile(double consoDonnesMobile) {
+		this.consoDonnesMobile = consoDonnesMobile;
+	}
+
+
+
+	public double getConsoLuminosite() {
+		return consoLuminosite;
+	}
+
+
+
+	public void setConsoLuminosite(double consoLuminosite) {
+		this.consoLuminosite = consoLuminosite;
+	}
+
+
+
+	public ArrayList<App> getApps() {
+		return apps;
+	}
+
+
+
+	public void setApps(ArrayList<App> apps) {
+		this.apps = apps;
+	}
+
+
+
 	public boolean isWifi() {
 		return wifi;
 	}
@@ -92,11 +193,17 @@ public class Device {
 		this.batterie = batterie;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Device [wifi=" + wifi + ", bleuthoot=" + bleuthoot + ", donneesMobile=" + donneesMobile
-				+ ", luminsoite=" + luminsoite + ", batterie=" + batterie + "]";
+				+ ", luminsoite=" + luminsoite + ", batterie=" + batterie + ", consoWifi=" + consoWifi
+				+ ", consoBlouthoot=" + consoBlouthoot + ", consoDonnesMobile=" + consoDonnesMobile
+				+ ", consoLuminosite=" + consoLuminosite + ", apps=" + apps + "]";
 	}
+
+	
 	
 	
 
