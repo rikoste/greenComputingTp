@@ -20,6 +20,8 @@ public class Device {
 		this.donneesMobile=false;
 		this.luminsoite=100;
 		this.batterie=100;
+		
+		// Ajout des apps dans la liste
 		initApp();
 	}
 
