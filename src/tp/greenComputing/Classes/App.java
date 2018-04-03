@@ -1,5 +1,7 @@
 package tp.greenComputing.Classes;
 
+import java.util.List;
+
 public class App {
 
 	private String nomApp;
@@ -10,7 +12,15 @@ public class App {
 	private int dureeMin;
 	
 	public App() {
-		
+	}
+	
+	public App(String nomApp, double consoApp, boolean useInternet, boolean useBleuthoot, int luminosite, int dureeMin) {
+		this.setNomApp(nomApp);
+		this.setConsoApp(consoApp);
+		this.setUseInternet(useInternet);
+		this.setUseBleuthoot(useBleuthoot);
+		this.setLuminosite(luminosite);
+		this.setDureeMin(dureeMin);
 	}
 
 	public String getNomApp() {
@@ -60,5 +70,5 @@ public class App {
 	public void setDureeMin(int dureeMin) {
 		this.dureeMin = dureeMin;
 	}
-	
+		
 }

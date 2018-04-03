@@ -18,10 +18,24 @@ public class Device {
 		this.wifi=false;
 		this.bleuthoot=false;
 		this.donneesMobile=false;
-		this.luminsoite=0;
-		this.batterie=0;		
+		this.luminsoite=100;
+		this.batterie=100;
+		initApp();
 	}
 
+	public void initApp() {
+		App facebook = new App("FaceBook", 0.15, true, false, 30, 15);
+		App chrome = new App("Google Chrome", 0.17, true, false, 30, 15);
+		App whatsapp = new App("WhatsApp", 0.17, true, false, 25, 10);
+		App twitter = new App("Twitter", 0.16, true, false, 25, 15);
+		App instagram = new App("Instagram", 0.16, true, false, 30, 15);
+		
+		this.apps.add(facebook);
+		this.apps.add(chrome);
+		this.apps.add(whatsapp);
+		this.apps.add(twitter);
+		this.apps.add(instagram);
+	}
 	
 	public App getAppByName(String nomApp) {
 		
