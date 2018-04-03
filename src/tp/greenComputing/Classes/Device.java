@@ -1,5 +1,8 @@
 package tp.greenComputing.Classes;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class Device {
 
 	private boolean wifi;
@@ -7,6 +10,9 @@ public class Device {
 	private boolean donneesMobile;
 	private int luminsoite;
 	private int batterie;
+	
+	private ArrayList<App> apps = new ArrayList<App>();
+	
 	
 	public Device() {
 		this.wifi=false;
@@ -16,6 +22,20 @@ public class Device {
 		this.batterie=0;		
 	}
 
+	
+	public App getAppByName(String nomApp) {
+		
+		for (App app : this.apps) {
+		     if(app.getNomApp().equals(nomApp)) {
+		    	 return app;
+		    }
+		}
+				
+		return null;
+	}
+	
+	
+	
 	public boolean isWifi() {
 		return wifi;
 	}
