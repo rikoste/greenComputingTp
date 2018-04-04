@@ -9,7 +9,7 @@ public class Device {
 	private boolean bleuthoot;
 	private boolean donneesMobile;
 	private int luminsoite;
-	private int batterie;
+	private double batterie;
 	private double consoWifi;
 	private double consoBlouthoot;
 	private double consoDonnesMobile;
@@ -18,6 +18,7 @@ public class Device {
 	
 	private ArrayList<App> apps = new ArrayList<App>();
 	private ArrayList<Sequ> sequences = new ArrayList<Sequ>();
+	public ArrayList<App> appsencours = new ArrayList<App>();
 	
 	
 	public Device() {
@@ -37,27 +38,21 @@ public class Device {
 	
 	
 	
-	public boolean ifInternetUsed(String composant) {
-		
-		for (App app : this.apps) {
-		     if(composant.equals("internet")) {
-		    	 if(app.isUseBleuthoot()==true) {
+	public boolean ifInternetUsed() {
+		for (App app : this.appsencours) {
+		    	 if(app.isUseInternet()) {
 		    		 return true;
 		    	 }
-		     }
 		} 			
 		return false;
 	}
 	
 
-	public boolean ifBleuthootUsed(String composant) {
-		
-		for (App app : this.apps) {
-		     if(composant.equals("bleuthoot")) {
-		    	 if(app.isUseBleuthoot()==true) {
+	public boolean ifBleuthootUsed() {
+		for (App app : this.appsencours) {
+		    	 if(app.isUseBleuthoot() ) {
 		    		 return true;
 		    	 }
-		     }
 		} 			
 		return false;
 	}
@@ -68,11 +63,11 @@ public class Device {
 	
 
 	public void initApp() {
-		App facebook = new App("FaceBook", 0.15, true, false, 30, 15);
-		App chrome = new App("Chrome", 0.17, true, false, 30, 15);
-		App whatsapp = new App("WhatsApp", 0.17, true, false, 25, 10);
-		App twitter = new App("Twitter", 0.16, true, false, 25, 15);
-		App instagram = new App("Instagram", 0.16, true, false, 30, 15);
+		App facebook = new App("FaceBook", 0.00015, true, false, 30, 15);
+		App chrome = new App("Google Chrome", 0.00017, true, false, 30, 15);
+		App whatsapp = new App("WhatsApp", 0.00017, true, false, 25, 10);
+		App twitter = new App("Twitter", 0.00016, true, false, 25, 15);
+		App instagram = new App("Instagram", 0.00016, true, false, 30, 15);
 		
 		this.apps.add(facebook);
 		this.apps.add(chrome);
@@ -171,12 +166,27 @@ public class Device {
 		return null;
 	}
 	
+	public double getSommeConso() {
+		double conso = 0;
+				for (App app : this.appsencours) {
+		     conso = conso + app.getConsoApp();
+		}
+				
+		return conso;
+	}
 	
 	
 	public double getConsoWifi() {
+		if(isWifi())
 		return consoWifi;
+		return 0;
 	}
 
+	
+	
+	
+	
+	
 
 
 	public void setConsoWifi(double consoWifi) {
@@ -265,12 +275,12 @@ public class Device {
 		this.luminsoite = luminsoite;
 	}
 
-	public int getBatterie() {
+	public double getBatterie() {
 		return batterie;
 	}
 
-	public void setBatterie(int batterie) {
-		this.batterie = batterie;
+	public void setBatterie(double batterie) {
+		this.batterie = this.batterie - batterie;
 	}
 
 

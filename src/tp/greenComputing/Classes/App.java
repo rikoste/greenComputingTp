@@ -71,4 +71,11 @@ public class App {
 		this.dureeMin = dureeMin;
 	}
 		
+	
+	@Override
+	public String toString() {
+		return "App [nomApp=" + nomApp + ", consoApp=" + consoApp + ", useInternet=" + useInternet + ", useBleuthoot="
+				+ useBleuthoot + ", luminosite=" + luminosite + ", dureeMin=" + dureeMin + "]";
+	}
+	
 }
